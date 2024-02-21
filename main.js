@@ -38,11 +38,28 @@ function getProm(serieNum) {
 
 const getPoweredNum = (num, cantidadDeVeces) => Math.pow(num, 2) * cantidadDeVeces
 
+numberList.addEventListener('input', event => {
+    const regex = /^[0-9,]*$/g;
+
+    if (!regex.test(event.target.value)) {
+        let eventData = {
+            targetSplit: event.target.value.split(''),
+            childs: event.target.value.split('').length
+        }
+
+        event.target.value.split('').forEach((letter, index) => {
+            if (index === 0) event.target.value = '';
+
+            if (index < eventData.childs - 1) event.target.value += letter
+        })
+    }
+})
+
 calculate.addEventListener('click', () => {
   const numbers = numberList.value.split(',').map(element => parseInt(element))
 
   varianza10.innerText = getVarianza(numbers).toFixed(2);
   varianza.innerText = (getVarianza(numbers) / numbers.length).toFixed(2);
   promedio.innerText = getProm(numbers).toFixed(2);
-  raizV.innerText = Math.sqrt(getVarianza(numbers) / 10).toFixed(3);
+  raizV.innerText = Math.sqrt(getVarianza(numbers) / numbers.length).toFixed(3);
 })
