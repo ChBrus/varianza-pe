@@ -1,9 +1,10 @@
 const numberList = document.getElementById('numberList'),
   calculate = document.getElementById('calculate'),
-  varianza10 = document.getElementById('10vc'),
-  varianza = document.getElementById('vc'),
+  nVecesVarianza = document.getElementById('var-por-n-veces'),
+  varianza = document.getElementById('var'),
   promedio = document.getElementById('prom'),
-  raizV = document.getElementById('v')
+  desviacion = document.getElementById('desv'),
+  numeros = document.getElementById('n-num')
 
 function getVarianza(serieNum) {
     let prom = getProm(serieNum), varianzaCuadrada = 0
@@ -58,8 +59,9 @@ numberList.addEventListener('input', event => {
 calculate.addEventListener('click', () => {
   const numbers = numberList.value.split(',').map(element => parseInt(element))
 
-  varianza10.innerText = getVarianza(numbers).toFixed(2);
+  nVecesVarianza.innerText = getVarianza(numbers).toFixed(2);
   varianza.innerText = (getVarianza(numbers) / numbers.length).toFixed(2);
   promedio.innerText = getProm(numbers).toFixed(2);
-  raizV.innerText = Math.sqrt(getVarianza(numbers) / numbers.length).toFixed(3);
+  desviacion.innerText = Math.sqrt(getVarianza(numbers) / numbers.length).toFixed(3);
+  numeros.innerText = numbers.length
 })
