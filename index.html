@@ -13,32 +13,54 @@
     <main class="container-fluid d-flex flex-column justify-content-center">
         <div class="mb-3 row">
             <label class="col-3 form-label" for="numberList">Serie númerica (Dividido por comas)</label>
-            <input type="text" class="col form-control" name="numberList" id="numberList">
+            <textarea class="form-control" name="numberList" id="numberList" rows="3"></textarea>            
         </div>
         <button class="btn btn-light" id="calculate">Calcular</button>
     </main>
     <section class="container-fluid d-flex flex-column gap-3 mt-3">
-        <article class="d-flex gap-3 align-items-center">
-            <h3 class="m-0 fs-4">Números en la sucesión (N):</h3>
-            <p class="m-0 fs-5" id="n-num"></p>
-        </article>
-        <article class="d-flex gap-3 align-items-center">
-            <h3 class="m-0 fs-4">N veces Varianza:</h3>
-            <p class="m-0 fs-5" id="var-por-n-veces"></p>
-        </article>
-        <article class="d-flex gap-3 align-items-center">
-            <h3 class="m-0 fs-4">Promedio:</h3>
-            <p class="m-0 fs-5" id="prom"></p>
-        </article>
-        <article class="d-flex gap-3 align-items-center">
-            <h3 class="m-0 fs-4">Varianza:</h3>
-            <p class="m-0 fs-5" id="var"></p>
-        </article>
-        <article class="d-flex gap-3 align-items-center">
-            <h3 class="m-0 fs-4">Desviación estándar:</h3>
-            <p class="m-0 fs-5" id="desv"></p>
+        <article class="table-responsive">
+            <table class="table table-success">
+                <thead>
+                    <tr>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td scope="row">
+                            Números en la sucesión (N)
+                        </td>
+                        <td id="n-num"></td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row">
+                            N veces Varianza
+                        </td>
+                        <td id="var-por-n-veces"></td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row">
+                            Promedio
+                        </td>
+                        <td id="prom"></td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row">
+                            Varianza
+                        </td>
+                        <td id="var"></td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row">
+                            Desviación estándar
+                        </td>
+                        <td id="desv"></td>
+                    </tr>
+                </tbody>
+            </table>
         </article>
     </section>
-    <script src="./main.js"></script>
+    <script src="./main.js" type="module"></script>
 </body>
 </html>
