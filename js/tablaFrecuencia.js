@@ -1,5 +1,14 @@
+import { tableFrecuency } from './consts.js'
+
 export function getDataJSON(numText) {
-    const numArray = numText.split(', ').map(num => {return parseInt(num)})
+    const numArray = numText.split(',').map(num => {return parseInt(num)})
+
+    const tempArray = []
+    for(let i = 0; i < 10; i++) {
+        tempArray.push(numArray.slice((numArray.length / 10) * (i), (numArray.length / 10) * (i + 1)))
+    }
+
+    console.log(tempArray)
 
     const numArraySort = numArray.sort(),
         length = numArray.length
@@ -65,10 +74,68 @@ export function getDataJSON(numText) {
         tempCol5 = sumCol3Col5
     }
 
+    buildTableFrecuency(table)
+
     return {
         R: rango,
         K: intervalo,
         A: amplitud,
         Table: table
     }
+}
+
+export function buildTableFrecuency(tableData) {
+    const table = document.createElement('table'),
+        thead = document.createElement('thead'),
+        tbody = document.createElement('tbody'),
+        trTemplate = document.createElement('tr'),
+        thTemplate = document.createElement('th'),
+        tdTemplate = document.createElement('td'),
+        tableColumns = tableData.length,
+        columnsHeader = [
+            'Clases',
+            'x',
+            'f',
+            'fr',
+            'F'
+        ]
+
+    table.classList.add('table')
+    table.classList.add('table-success')
+    thTemplate.setAttribute('scope', 'col')
+
+    // Table head
+    let trHead = trTemplate.cloneNode()
+
+    for(let i = 0; i < tableColumns; i++) {
+        const th = thTemplate.cloneNode()
+
+        th.textContent = columnsHeader[i]
+
+        trHead.appendChild(th)
+    }
+    thead.appendChild(trHead)
+
+    // Table body
+    for(let i = 0; i < tableData[0].length; i++) {
+        const tr = trTemplate.cloneNode()
+
+        for(let j = 0; j < tableColumns; j++) {
+            const td = tdTemplate.cloneNode();
+
+            if (j === 0) {
+                td.setAttribute('scope', 'row')
+
+                td.textContent = `[${tableData[j][i][0]} -> ${tableData[j][i][1]}` + (i === tableData[0].length - 1 ? ']' : ')')
+            } else td.textContent = tableData[j][i]
+
+            tr.appendChild(td)
+        }
+
+        tbody.appendChild(tr);
+    }
+
+    // Joining body & head to table
+    table.append(tbody, thead)
+    tableFrecuency.appendChild(table)
 }

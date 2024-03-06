@@ -4,4 +4,5 @@ export const numberList = document.getElementById('numberList'),
   varianza = document.getElementById('var'),
   promedio = document.getElementById('prom'),
   desviacion = document.getElementById('desv'),
-  numeros = document.getElementById('n-num')
+  numeros = document.getElementById('n-num'),
+  tableFrecuency = document.getElementById('tableFrecuency')

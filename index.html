@@ -8,11 +8,11 @@
 </head>
 <body class="p-3">
     <header class="container-fluid d-flex justify-content-center align-items-center mb-3">
-        <h1>Calculadora de Varianza</h1>
+        <h1>Calculadora - Probabilidad & Estadística</h1>
     </header>
     <main class="container-fluid d-flex flex-column justify-content-center">
         <div class="mb-3 row">
-            <label class="col-3 form-label" for="numberList">Serie númerica (Dividido por comas)</label>
+            <label class="form-label" for="numberList">Serie númerica (Dividido por comas)</label>
             <textarea class="form-control" name="numberList" id="numberList" rows="3"></textarea>            
         </div>
         <button class="btn btn-light" id="calculate">Calcular</button>
@@ -60,6 +60,8 @@
                 </tbody>
             </table>
         </article>
+        <hr>
+        <article id="tableFrecuency" class="table-responsive"></article>
     </section>
     <script src="./main.js" type="module"></script>
 </body>
