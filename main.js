@@ -12,5 +12,5 @@ calculate.addEventListener('click',
     desviacion.innerText = Math.sqrt(getVarianza(numbers) / numbers.length).toFixed(3)
     numeros.innerText = numbers.length
 
-    console.log(getDataJSON(numberList.value))
+    getDataJSON(numberList.value)
 })

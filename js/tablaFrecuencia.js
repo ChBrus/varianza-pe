@@ -1,23 +1,23 @@
-import { tableFrecuency } from './consts.js'
+import { rangoTag, intervaloTag, amplitudTag, tableFrecuency } from './consts.js'
 
 export function getDataJSON(numText) {
     const numArray = numText.split(',').map(num => {return parseInt(num)})
 
-    const tempArray = []
-    for(let i = 0; i < 10; i++) {
-        tempArray.push(numArray.slice((numArray.length / 10) * (i), (numArray.length / 10) * (i + 1)))
-    }
-
-    console.log(tempArray)
-
-    const numArraySort = numArray.sort(),
+    const numArraySort = numArray.sort((a, b) => a - b),
         length = numArray.length
 
+    console.log(numArraySort)
+
     let rango = numArraySort[length - 1] - numArraySort[0]
+    console.log(numArraySort[length - 1], numArraySort[0], numArraySort)
 
     let intervalo = (1 + 3.322 * Math.log10(numArray.length))
 
     let amplitud = rango / intervalo
+
+    rangoTag.textContent = rango.toFixed(2)
+    intervaloTag.textContent = intervalo.toFixed(2)
+    amplitudTag.textContent = amplitud.toFixed(2)
 
     rango = Math.ceil(rango)
     intervalo = Math.ceil(intervalo)
@@ -74,6 +74,7 @@ export function getDataJSON(numText) {
         tempCol5 = sumCol3Col5
     }
 
+    tableFrecuency.innerHTML = ""
     buildTableFrecuency(table)
 
     return {
